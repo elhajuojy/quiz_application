@@ -30,9 +30,7 @@ class _MyAppState extends State<MyApp> {
 
   answerQuestion(int score) {
     _totalscore += score;
-    // if (_questionIndex == listQuestions.length-1) {
-    //   _questionIndex = -1;
-    // }
+
     setState(() => {_questionIndex++});
 
     print(_questionIndex);

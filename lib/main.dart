@@ -15,13 +15,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
+  int _totalscore = 0;
 
-
-  void resetQuiz(){
-    setState(() => {_questionIndex=0});
+  void resetQuiz() {
+    setState(() => {_questionIndex = 0});
   }
 
-  answerQuestion() {
+  answerQuestion(int score) {
+    _totalscore += score;
     // if (_questionIndex == listQuestions.length-1) {
     //   _questionIndex = -1;
     // }
@@ -29,52 +30,42 @@ class _MyAppState extends State<MyApp> {
 
     print(_questionIndex);
 
-
     print('Answer chosen ');
+    print(_totalscore);
   }
 
   final List<Map<String, Object>> listQuestions = [
     {
       'qstText': 'What is the output of print(10 - 4 * 2)',
       'answers': [
-        '12',
-        '2',
-        '39',
-        '24'
+        {'text': '12', 'score': 10},
+        {'text': '2', 'score': 21},
+        {'text': '39', 'score': 4},
+        {'text': '24', 'score': 30},
       ]
     },
     {
       'qstText': 'Python function always returns a value',
       'answers': [
-        'TRUE',
-        'FALSE',
-
+        {'text': 'TRUE', 'score': 20},
+        {'text': 'FALSE', 'score': 12}
       ]
     },
     {
-      'qstText': 'Choose the correct function to get the ASCII code of a character ',
+      'qstText':
+          'Choose the correct function to get the ASCII code of a character ',
       'answers': [
-        'ord char',
-        'ascii char',
-
+        // {'text': 'ord char', 'socre': 2},
+        {'text': 'ascii char', 'score': 5},
+        {'text': ' char', 'score': 29},
+        {'text': 'ascii ', 'score': 1}
       ]
     },
     {
       'qstText': 'Select which is true for Python tuple',
       'answers': [
-        'A tuple maintains the order of items',
-        'We can change the tuple once created',
-        'A tuple is unordered0'
-
-      ]
-    },
-    {
-      'qstText': 'What is the type of the following variable : x = -5j',
-      'answers': [
-        "int",
-        "real",
-        "imaginary"
-
+        {'text': 'A tuple maintains the order of items', 'score': 20},
+        {'text': 'We can change the tuple once created', 'score': 20}
       ]
     },
   ];
@@ -89,9 +80,9 @@ class _MyAppState extends State<MyApp> {
           ),
           body: Container(
             // width: double.infinity,
-            child: _questionIndex<listQuestions.length?
-            Quiz(listQuestions, _questionIndex, answerQuestion)
-                :Result(resetQuiz),
+            child: _questionIndex < listQuestions.length
+                ? Quiz(listQuestions, _questionIndex, answerQuestion)
+                : Result(resetQuiz, _totalscore),
           )),
     );
   }

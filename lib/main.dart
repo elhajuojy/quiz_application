@@ -18,6 +18,7 @@ Color w = Colors.white;
 Color b = Colors.black;
 Color y = Colors.yellow;
 Color r = Colors.red;
+bool isSwitch = false;
 
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
@@ -76,7 +77,6 @@ class _MyAppState extends State<MyApp> {
     },
   ];
 
-  bool isSwitch = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -87,7 +87,11 @@ class _MyAppState extends State<MyApp> {
             child: Icon(Icons.arrow_back),
           ),
           appBar: AppBar(
-            title: Text('Quiz app'),
+            title: Text(
+              'Quiz app',
+              style: TextStyle(
+                  color: isSwitch == true ? Colors.black : Colors.white),
+            ),
             actions: <Widget>[
               Switch(
                 value: isSwitch,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'main.dart';
 
 class Questionn extends StatelessWidget {
   //sconst Questionn({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class Questionn extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       child: Text(
         questionText,
-        style: TextStyle(fontSize: 25),
+        style: TextStyle(fontSize: 25, color: b),
         textAlign: TextAlign.center,
       ),
     );

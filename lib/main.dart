@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quiz_application_/question.dart';
 import 'package:quiz_application_/answer.dart';
 import 'package:quiz_application_/quiz.dart';
@@ -12,6 +13,11 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
+
+Color w = Colors.white;
+Color b = Colors.black;
+Color y = Colors.yellow;
+Color r = Colors.red;
 
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
@@ -70,15 +76,44 @@ class _MyAppState extends State<MyApp> {
     },
   ];
 
+  bool isSwitch = false;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => {},
+            child: Icon(Icons.arrow_back),
+          ),
           appBar: AppBar(
             title: Text('Quiz app'),
+            actions: <Widget>[
+              Switch(
+                value: isSwitch,
+                onChanged: (Value) {
+                  setState(() {
+                    isSwitch = Value;
+                    print(isSwitch);
+                    if (isSwitch == true) {
+                      b = Colors.white;
+                      w = Colors.black;
+                      r = Colors.yellow;
+                      y = Colors.red;
+                    }
+                    if (isSwitch == false) {
+                      b = Colors.black;
+                      w = Colors.white;
+                      r = Colors.red;
+                      y = Colors.yellow;
+                    }
+                  });
+                },
+              )
+            ],
           ),
           body: Container(
+            color: w,
             // width: double.infinity,
             child: _questionIndex < listQuestions.length
                 ? Quiz(listQuestions, _questionIndex, answerQuestion)

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'main.dart';
 
 class Result extends StatelessWidget {
   // const Result({Key? key}) : super(key: key);
@@ -27,18 +28,19 @@ class Result extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(resultPhrase,
-            style: TextStyle(
-                fontSize: 40, fontWeight: FontWeight.bold, color: Colors.red)),
+            style:
+                TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: r)),
         ElevatedButton(
           style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.red),
+              backgroundColor: MaterialStateProperty.all(r),
               padding: MaterialStateProperty.all(
                 EdgeInsets.all(15),
               )),
           onPressed: q,
           child: Text(
             'restart',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            style:
+                TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: w),
           ),
         )
       ],

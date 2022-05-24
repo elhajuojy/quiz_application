@@ -7,6 +7,7 @@ class Quiz extends StatelessWidget {
 
   final List<Map<String, Object>> listquestion;
   final int questionIndex;
+  //this is contsatrtat so we can get the score that came from the click
   final Function(int s) answerquestionn;
 
   Quiz(this.listquestion, this.questionIndex, this.answerquestionn);
